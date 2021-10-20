@@ -18,14 +18,14 @@ const Header = () => {
       </h1>
       {user === null ? (
         <button
-          onClick={logOutUser}
+          onClick={() => logOutUser()}
           className="btn bg-blue-500 text-white py-2 px-5 rounded-md cursor-pointer hover:bg-blue-400"
         >
           Logout
         </button>
       ) : (
         <button
-          onClick={history.push("/signin")}
+          onClick={() => history.push("/signin")}
           className="btn bg-blue-500 text-white py-2 px-5 rounded-md cursor-pointer hover:bg-blue-400"
         >
           LogIn

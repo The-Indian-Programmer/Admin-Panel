@@ -21,7 +21,6 @@ const HomePage = () => {
   useEffect(() => {
     if (user === null) {
       history.push("/signin");
-      console.log("hello");
     }
   }, []);
 

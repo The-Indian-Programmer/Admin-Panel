@@ -38,11 +38,13 @@ const SignInPage = () => {
     const validUser = JSON.parse(allData).filter((item) => {
       return item.email === email;
     });
+
     if (validUser.length === 0) return alert("This email is not registered");
     if (validUser[0].password !== password) {
       alert("Password does not match");
       return;
     }
+
     dispatch(setUser(validUser[0]));
     history.push("/");
   };
