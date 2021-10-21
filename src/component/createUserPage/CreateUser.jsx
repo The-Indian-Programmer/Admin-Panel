@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import validateData from "../../utils/validateAuthData";
 const CreateUser = () => {
   const user = useSelector((state) => state.user);
+  const history = useHistory();
   const [data, setData] = useState({
     email: "",
     name: "",
     age: "",
     gender: "male",
-    user: "user",
+    role: "employee",
     password: "",
     cpassword: "",
   });
@@ -39,19 +41,21 @@ const CreateUser = () => {
     if (allData === null) {
       localStorage.setItem("allData", JSON.stringify([data]));
       clearFormData();
+      history.push("/");
       return;
     }
     let emailCheck = JSON.parse(allData).filter((item) => {
       return item.email === data.email;
     });
+
     if (emailCheck.length !== 0) {
       alert("Email already exists");
-
       return;
     }
     let newData = JSON.parse(allData).concat(data);
     localStorage.setItem("allData", JSON.stringify(newData));
     clearFormData();
+    history.push("/");
   };
   const clearFormData = () => {
     setData({
@@ -59,7 +63,7 @@ const CreateUser = () => {
       name: "",
       age: "",
       gender: "male",
-      user: "user",
+      role: "employee",
       password: "",
       cpassword: "",
     });
@@ -121,16 +125,16 @@ const CreateUser = () => {
         </div>
         <div className="admin_input w-full h-10 mt-2 ">
           <select
-            name="user"
-            id="user"
+            name="role"
+            id="role"
             className="w-full h-full px-5 bg-none text-gray-800"
-            value={data.user}
+            value={data.role}
             onChange={handleChange}
           >
-            <option value="user">User</option>
-            <option value="admin">Admin</option>
-            {user.user === "superadmin" && (
-              <option value="superadmin">Super Admin</option>
+            <option value="employee">Employee</option>
+            <option value="manager">Manager</option>
+            {user.role === "founder" && (
+              <option value="founder">Founder</option>
             )}
           </select>
         </div>

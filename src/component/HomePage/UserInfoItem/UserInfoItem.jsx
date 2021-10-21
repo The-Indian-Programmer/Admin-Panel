@@ -12,10 +12,10 @@ const UserInfoItem = ({ data, deleteUser }) => {
       <td class="px-4 py-3">{data.name}</td>
       <td class="px-4 py-3 uppercase">{data.age}</td>
       <td class="px-4 py-3 uppercase">{data.gender}</td>
-      <td class="px-4 py-3 uppercase">{data.user}</td>
+      <td class="px-4 py-3 uppercase">{data.role}</td>
       {user.user !== "user" && (
         <td class="px-4 py-3">
-          {user.user === "superadmin" ? (
+          {user.role === "founder" ? (
             <button
               onClick={() => deleteUser(data.email)}
               className="btn_delete_user bg-red-500 mr-2 py-1 px-2 rounded-md text-sm text-white"
@@ -25,7 +25,7 @@ const UserInfoItem = ({ data, deleteUser }) => {
           ) : (
             ""
           )}
-          {user.user === "admin" && data.user !== "superadmin" ? (
+          {user.role === "manager" && data.role === "employee" ? (
             <button
               onClick={() => deleteUser(data.email)}
               className="btn_delete_user bg-red-500 mr-2 py-1 px-2 rounded-md text-sm text-white"
@@ -37,14 +37,14 @@ const UserInfoItem = ({ data, deleteUser }) => {
           )}
 
           {/* edit btto    */}
-          {user.user === "superadmin" ? (
+          {user.role === "founder" ? (
             <button
               onClick={() => history.push(`edituser/${data.email}`)}
               className="btn_user_user bg-blue-500 ml-2 text-white py-1 px-4 text-sm rounded-md"
             >
               Edit
             </button>
-          ) : user.user === "admin" && data.user !== "superadmin" ? (
+          ) : user.role === "manager" && data.user !== "founder" ? (
             <button
               onClick={() => history.push(`edituser/${data.email}`)}
               className="btn_user_user bg-blue-500 ml-2 text-white py-1 px-4 text-sm rounded-md"

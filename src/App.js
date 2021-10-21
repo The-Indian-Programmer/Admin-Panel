@@ -16,7 +16,7 @@ function App() {
         name: "rootAdmin",
         age: "22",
         gender: "male",
-        user: "superadmin",
+        role: "founder",
         password: "root",
       };
       localStorage.setItem("allData", JSON.stringify([newUser]));

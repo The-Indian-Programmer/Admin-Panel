@@ -4,15 +4,15 @@ const user = (state = initialState, action) => {
     case "SETUSER":
       state = action.payload;
       return state;
+      break;
 
     case "REMOVEUSER":
       state = null;
       return state;
-
+      break;
     default:
-      return {
-        state,
-      };
+      return state;
+      break;
   }
 };
 

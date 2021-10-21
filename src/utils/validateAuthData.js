@@ -1,7 +1,7 @@
 const validateData = (data) => {
-  const { email, name, age, gender, user, password, cpassword } = data;
+  const { email, name, age, gender, role, password, cpassword } = data;
 
-  if (!email || !name || !age || !gender || !user || !password || !cpassword) {
+  if (!email || !name || !age || !gender || !role || !password || !cpassword) {
     return "All Fields are required";
   }
   const isValidEmail = valiDateEmail(email);

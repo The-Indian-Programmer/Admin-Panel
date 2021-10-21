@@ -42,11 +42,11 @@ const HomePage = () => {
         <div className="home_page mt-5">
           <div className="top flex flex-row w-3/4 m-auto justify-center items-center">
             <p class=" text-center font-bold m-5 text-gray-700 text-3xl">
-              All Users
+              All Employee
             </p>
-            {user.state !== null && user.user !== "user" && (
+            {user !== null && user.role !== "employee" && (
               <button className="btncreate_user bg-blue-500 py-2 px-5 text-white rounded-md hover:bg-blue-400">
-                <Link to="/createuser">Create User</Link>
+                <Link to="/createuser">Create Employee</Link>
               </button>
             )}
           </div>
@@ -55,9 +55,9 @@ const HomePage = () => {
               <th class="px-4 py-3">Email</th>
               <th class="px-4 py-3">Name</th>
               <th class="px-4 py-3">Age</th>
-              <th class="px-4 py-3">Sex</th>
+              <th class="px-4 py-3">Gender</th>
               <th class="px-4 py-3">Role</th>
-              {user.state !== null && user.user !== "user" && (
+              {user !== null && user.role !== "user" && (
                 <th class="px-4 py-3">Action</th>
               )}
             </tr>

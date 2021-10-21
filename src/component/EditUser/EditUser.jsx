@@ -8,7 +8,7 @@ const EditUser = () => {
   const [data, setData] = useState({
     email: "",
     name: "",
-    user: "",
+    role: "employee",
     age: "",
     gender: "male",
   });
@@ -107,13 +107,13 @@ const EditUser = () => {
             name="user"
             id="user"
             className="w-full h-full px-5 bg-none text-gray-800"
-            value={data.user}
+            value={data.role}
             onChange={handleChange}
           >
-            <option value="user">User</option>
-            <option value="admin">Admin</option>
-            {user.user === "superadmin" && (
-              <option value="superadmin">Super Admin</option>
+            <option value="employee">Employee</option>
+            <option value="manager">Manager</option>
+            {user.role === "founder" && (
+              <option value="founder">Founder</option>
             )}
           </select>
         </div>

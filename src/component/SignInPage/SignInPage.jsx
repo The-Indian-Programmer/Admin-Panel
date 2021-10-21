@@ -44,7 +44,6 @@ const SignInPage = () => {
       alert("Password does not match");
       return;
     }
-
     dispatch(setUser(validUser[0]));
     history.push("/");
   };
